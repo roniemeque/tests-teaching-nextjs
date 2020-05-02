@@ -38,7 +38,7 @@ export const globalStyles = () => css`
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     font-family: ${theme.fontFamily};
-    color: ${theme.colors.black};
+    color: ${theme.colors.text};
     background-color: white;
     padding: ${theme.gutter};
     @media (min-width: 900px) {

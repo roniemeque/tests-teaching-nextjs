@@ -1,9 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { allPlaces } from "../../../helpers/fauna";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+type Data = {
+  places: Place[];
+};
+
+export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const places = await allPlaces();
 
-  res.statusCode = 200;
-  res.json(places);
+  res.status(200).json({ places });
 };

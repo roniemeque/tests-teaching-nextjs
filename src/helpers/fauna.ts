@@ -4,7 +4,7 @@ const client = new faunadb.Client({
   secret: process.env.FAUNA_KEY,
 });
 
-export const allPlaces = async () => {
+export const allPlaces = async (): Promise<Place[]> => {
   const { data } = await client.query(
     q.Map(
       q.Paginate(q.Match(q.Index("all_places"))),
@@ -20,13 +20,18 @@ export const allPlaces = async () => {
   return places;
 };
 
-export const getPlace = async (id: string) => {
-  const { ref, data } = await client.query(
-    q.Get(q.Ref(q.Collection("places"), id))
-  );
+export const getPlace = async (id: string): Promise<Place | null> => {
+  try {
+    const { ref, data } = await client.query(
+      q.Get(q.Ref(q.Collection("places"), id))
+    );
 
-  return {
-    id: ref.value.id,
-    ...data,
-  };
+    return {
+      id: ref.value.id,
+      ...data,
+    };
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };

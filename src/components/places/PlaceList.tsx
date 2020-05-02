@@ -3,27 +3,22 @@ import { Title2 } from "../../styles/Titles";
 import styled from "../../styles/styled";
 import PlaceCard from "./PlaceCard";
 
-interface Props {}
+interface Props {
+  places: Place[];
+}
 
-const PlaceList: FunctionComponent<Props> = () => {
+const PlaceList: FunctionComponent<Props> = ({ places = [] }) => {
   return (
     <PlaceListStyled>
       <div className="gap-in-full">
         <Title2>Disponíveis</Title2>
       </div>
       <ul>
-        <li>
-          <PlaceCard></PlaceCard>
-        </li>
-        <li>
-          <PlaceCard></PlaceCard>
-        </li>
-        <li>
-          <PlaceCard></PlaceCard>
-        </li>
-        <li>
-          <PlaceCard></PlaceCard>
-        </li>
+        {places.map((place) => (
+          <li key={place.id}>
+            <PlaceCard place={place}></PlaceCard>
+          </li>
+        ))}
       </ul>
     </PlaceListStyled>
   );

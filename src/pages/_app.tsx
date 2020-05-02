@@ -29,7 +29,7 @@ const Main = styled.main`
   & > * {
     grid-column: 2 / -2;
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
   }
   & > .full {
     grid-column: span 3;

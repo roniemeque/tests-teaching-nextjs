@@ -1,6 +1,6 @@
 const light = {
   background: "white",
-  text: "#A6A6A6",
+  text: "#6D7278",
   textOnMain: "white",
   main: "#EF4565",
   secondary: "white",
@@ -14,6 +14,7 @@ const defaultTheme = {
     ...light,
   },
   border: {
+    big: "15px",
     normal: "10px",
     small: "5px",
     smaller: "3px",

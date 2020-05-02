@@ -4,6 +4,34 @@ import { Title3 } from "../../styles/Titles";
 //import { centsToCurrency } from "../../helpers/money";
 import { Button } from "../../styles/Buttons";
 import Link from "next/link";
+import { centsToCurrency } from "../../helpers/currency";
+
+interface Props {
+  place: Place;
+}
+
+const PlaceCard: FunctionComponent<Props> = ({ place }) => {
+  return (
+    <Link href={`/places/${place.id}`}>
+      <a title={place.title}>
+        <Card>
+          <div className="top">
+            <img src={`${place.image}/400x300`} alt={place.title} />
+          </div>
+          <div className="body">
+            <p className="location">
+              <img src="/imgs/icons8-map-24.png" alt="Ícone mapa" />
+              {place.location}
+            </p>
+            <h3>{place.title}</h3>
+            <p className="value">{centsToCurrency(place.dayFee)} / dia</p>
+            <Button>reservar</Button>
+          </div>
+        </Card>
+      </a>
+    </Link>
+  );
+};
 
 const Card = styled.div`
   box-shadow: ${(p) => p.theme.shadows.normal};
@@ -11,8 +39,10 @@ const Card = styled.div`
   overflow: hidden;
   max-width: 260px;
   transition: all 0.2s;
+  margin: 0 auto;
+  backface-visibility: hidden;
   &:hover {
-    transform: scale(1.01) translateY(-1px);
+    transform: translateY(-1px);
     box-shadow: ${({ theme }) => theme.shadows.bigger};
   }
   .top {
@@ -59,33 +89,5 @@ const Card = styled.div`
     }
   }
 `;
-
-interface Props {}
-
-const PlaceCard: FunctionComponent<Props> = () => {
-  return (
-    <Link href="places/cool-place">
-      <a title="Place cool">
-        <Card>
-          <div className="top">
-            <img
-              src="https://source.unsplash.com/oji_NGmBI5o/400x300"
-              alt="Prai"
-            />
-          </div>
-          <div className="body">
-            <p className="location">
-              <img src="/imgs/icons8-map-24.png" alt="Ícone mapa" />
-              Camboriú - SC
-            </p>
-            <h3>Casa na Praia em Camboriú</h3>
-            <p className="value">R$ 150,00 / dia</p>
-            <Button>reservar</Button>
-          </div>
-        </Card>
-      </a>
-    </Link>
-  );
-};
 
 export default PlaceCard;

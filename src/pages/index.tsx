@@ -1,8 +1,24 @@
 import Head from "next/head";
 import styled from "../styles/styled";
 import PlaceList from "../components/places/PlaceList";
+import { GetServerSideProps } from "next";
+import fetch from "isomorphic-unfetch";
+import { FunctionComponent } from "react";
 
-export default function Home() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await fetch("http://localhost:3000/api/places");
+  const { places } = await res.json();
+
+  return {
+    props: { places },
+  };
+};
+
+interface Props {
+  places: Place[];
+}
+
+const HomePage: FunctionComponent<Props> = ({ places }) => {
   return (
     <PageStyled>
       <Head>
@@ -15,11 +31,11 @@ export default function Home() {
         </LogoHero>
       </header>
       <section className="full">
-        <PlaceList></PlaceList>
+        <PlaceList places={places}></PlaceList>
       </section>
     </PageStyled>
   );
-}
+};
 
 const LogoHero = styled.h1`
   color: ${({ theme }) => theme.colors.main};
@@ -36,3 +52,5 @@ const LogoHero = styled.h1`
 `;
 
 const PageStyled = styled.div``;
+
+export default HomePage;
