@@ -1,14 +1,14 @@
 const light = {
   background: "white",
   text: "#A6A6A6",
+  textOnMain: "white",
   main: "#EF4565",
   secondary: "white",
 };
 
 const defaultTheme = {
   gutter: "1rem",
-  fontFamily: `"SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
-  "Arial", sans-serif`,
+  fontFamily: "sans-serif",
   colors: {
     black: "black",
     ...light,
@@ -20,6 +20,7 @@ const defaultTheme = {
   },
   shadows: {
     normal: "0 1px 3px rgba(75, 75, 75, 0.5)",
+    bigger: "0 3px 7px rgba(75, 75, 75, 0.6)",
   },
 };
 

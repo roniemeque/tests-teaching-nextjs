@@ -6,10 +6,8 @@ export const Button = styled.button`
   appearance: none;
   cursor: pointer;
   transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.02) translateY(-1px);
-  }
-  &:focus {
-    transform: scale(0.99) translateY(0);
-  }
+  border-radius: ${({ theme }) => theme.border.small};
+  padding: 0.3rem 1rem;
+  background: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.main};
 `;

@@ -2,6 +2,8 @@ import { css } from "@emotion/core";
 import { theme } from "./theme";
 
 export const globalStyles = () => css`
+  @import url("https://fonts.googleapis.com/css2?family=Romanesco&display=swap");
+
   *,
   *::before,
   *::after {
@@ -37,7 +39,12 @@ export const globalStyles = () => css`
     line-height: 1.5;
     font-family: ${theme.fontFamily};
     color: ${theme.colors.black};
-    background-color: ${theme.colors.background};
+    background-color: white;
+    padding: ${theme.gutter};
+    @media (min-width: 900px) {
+      padding: 1.4rem;
+      border: 1.4rem solid #f7f7f7;
+    }
   }
   ul[class],
   ol[class],
@@ -59,6 +66,10 @@ export const globalStyles = () => css`
   }
   input {
     border: none;
+    &:hover,
+    &:focus {
+      outline: none;
+    }
   }
   a {
     text-decoration: none;
