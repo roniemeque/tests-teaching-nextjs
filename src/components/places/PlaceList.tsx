@@ -54,6 +54,7 @@ const PlaceListStyled = styled.div`
       padding: 1rem;
       justify-content: space-between;
       gap: 2rem;
+      max-width: initial;
       &::before,
       &::after {
         display: none;
