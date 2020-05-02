@@ -4,11 +4,15 @@ import { GetServerSideProps } from "next";
 import fetch from "isomorphic-unfetch";
 import { FunctionComponent } from "react";
 import { Title1 } from "../../styles/Titles";
+import { apiUrl } from "../../helpers/api";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { placeId } = context.params;
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  params,
+}) => {
+  const { placeId } = params;
 
-  const res = await fetch(`http://localhost:3000/api/places/${placeId}`);
+  const res = await fetch(`http://${req.headers.host}/api/places/${placeId}`);
   const { place } = await res.json();
 
   return {

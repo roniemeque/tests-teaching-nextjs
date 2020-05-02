@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "../../styles/styled";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Nav = () => {
   const [bookingCode, setBookingCode] = useState("");
@@ -18,9 +19,11 @@ const Nav = () => {
 
   return (
     <NavStyled>
-      <a href="/" title="Home" className="logo">
-        Cool Places
-      </a>
+      <Link href="/">
+        <a title="Home" className="logo">
+          Cool Places
+        </a>
+      </Link>
       <SearchInput>
         <img src="/imgs/icons8-search-24.png" alt="Ícone busca" />
         <input

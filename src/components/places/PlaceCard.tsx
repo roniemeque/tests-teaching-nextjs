@@ -12,7 +12,7 @@ interface Props {
 
 const PlaceCard: FunctionComponent<Props> = ({ place }) => {
   return (
-    <Link href={`/places/${place.id}`}>
+    <Link href="/places/[placeId]" as={`/places/${place.id}`}>
       <a title={place.title}>
         <Card>
           <div className="top">
