@@ -6,8 +6,9 @@ type Data = {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  //const places = await allPlaces();
   const bookingId = await createBooking(req.body);
+
+  // send mail
 
   res.status(200).json({ bookingId });
 };

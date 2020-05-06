@@ -14,4 +14,6 @@ interface Booking {
   email: string;
   checkIn: string;
   checkOut: string;
+  place?: Place;
+  status: "pending" | "denied" | "approved";
 }

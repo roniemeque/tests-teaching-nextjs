@@ -13,7 +13,7 @@ const Nav = () => {
 
   const handleEnter = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && bookingCode) {
-      router.push(`/bookings/${bookingCode}`);
+      router.push("/bookings/[bookingId]", `/bookings/${bookingCode}`);
     }
   };
 

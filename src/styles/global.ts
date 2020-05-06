@@ -67,6 +67,7 @@ export const globalStyles = () => css`
   }
   a {
     text-decoration: none;
+    cursor: pointer;
   }
   fieldset {
     border: none;

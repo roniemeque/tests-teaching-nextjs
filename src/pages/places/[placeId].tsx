@@ -25,6 +25,14 @@ interface Props {
 }
 
 const PlacePage: FunctionComponent<Props> = ({ place }) => {
+  if (!place) {
+    return (
+      <div>
+        <h1>Acomodação não encontrada</h1>
+      </div>
+    );
+  }
+
   return (
     <>
       <Head>

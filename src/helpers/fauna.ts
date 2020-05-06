@@ -42,7 +42,9 @@ export const getItemById = async (
 export const createBooking = async (booking: Booking): Promise<any> => {
   try {
     const { ref } = await client.query(
-      q.Create(q.Collection("bookings"), { data: { ...booking } })
+      q.Create(q.Collection("bookings"), {
+        data: { ...booking, status: "pending" },
+      })
     );
 
     return ref.value.id;

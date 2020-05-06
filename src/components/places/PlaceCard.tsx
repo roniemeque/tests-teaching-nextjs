@@ -6,38 +6,41 @@ import { centsToCurrency } from "../../helpers/currency";
 
 interface Props {
   place: Place;
+  buttonText?: string;
 }
 
-const PlaceCard: FunctionComponent<Props> = ({ place }) => {
+const PlaceCard: FunctionComponent<Props> = ({
+  place,
+  buttonText = "reservar",
+}) => {
   return (
     <Link href="/places/[placeId]" as={`/places/${place.id}`}>
-      <a title={place.title}>
-        <Card>
-          <div className="top">
-            <img src={`${place.image}/400x300`} alt={place.title} />
-          </div>
-          <div className="body">
-            <p className="location">
-              <img src="/imgs/icons8-map-24.png" alt="Ícone mapa" />
-              {place.location}
-            </p>
-            <h3>{place.title}</h3>
-            <p className="value">{centsToCurrency(place.dayFee)} / dia</p>
-            <Button>reservar</Button>
-          </div>
-        </Card>
-      </a>
+      <Card title={place.title}>
+        <div className="top">
+          <img src={`${place.image}/400x300`} alt={place.title} />
+        </div>
+        <div className="body">
+          <p className="location">
+            <img src="/imgs/icons8-map-24.png" alt="Ícone mapa" />
+            {place.location}
+          </p>
+          <h3>{place.title}</h3>
+          <p className="value">{centsToCurrency(place.dayFee)} / dia</p>
+          <Button>{buttonText}</Button>
+        </div>
+      </Card>
     </Link>
   );
 };
 
-const Card = styled.div`
+const Card = styled.a`
+  display: block;
   box-shadow: ${(p) => p.theme.shadows.normal};
   border-radius: ${(p) => p.theme.border.normal};
   overflow: hidden;
   max-width: 260px;
   transition: all 0.2s;
-  margin: 0 auto;
+  margin: 0;
   backface-visibility: hidden;
   &:hover {
     transform: translateY(-1px);
