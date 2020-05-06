@@ -1,12 +1,17 @@
 import Head from "next/head";
 import styled from "../styles/styled";
 import PlaceList from "../components/places/PlaceList";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import fetch from "isomorphic-unfetch";
 import { FunctionComponent } from "react";
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const res = await fetch(`http://${req.headers.host}/api/places`);
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api"
+    : "https://coolplaces.ronie.dev/api";
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(`${API_URL}/places`);
   const { places } = await res.json();
 
   return {
