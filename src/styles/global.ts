@@ -33,18 +33,12 @@ export const globalStyles = () => css`
     margin: 0;
   }
   body {
-    min-height: 100vh;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     font-family: ${theme.fontFamily};
     color: ${theme.colors.text};
     background-color: white;
-    padding: ${theme.gutter};
-    @media (min-width: 900px) {
-      padding: 1.4rem;
-      border: 1.4rem solid #f7f7f7;
-    }
   }
   ul[class],
   ol[class],

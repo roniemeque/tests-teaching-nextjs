@@ -20,7 +20,7 @@ interface Props {
 
 const HomePage: FunctionComponent<Props> = ({ places }) => {
   return (
-    <PageStyled>
+    <>
       <Head>
         <title>Cool Places</title>
         <link rel="icon" href="/favicon.ico" />
@@ -33,7 +33,7 @@ const HomePage: FunctionComponent<Props> = ({ places }) => {
       <section className="full">
         <PlaceList places={places}></PlaceList>
       </section>
-    </PageStyled>
+    </>
   );
 };
 
@@ -50,7 +50,5 @@ const LogoHero = styled.h1`
     line-height: 1;
   }
 `;
-
-const PageStyled = styled.div``;
 
 export default HomePage;

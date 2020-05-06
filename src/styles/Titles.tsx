@@ -3,7 +3,7 @@ import styled from "./styled";
 export const Title1 = styled.h1`
   color: ${({ theme }) => theme.colors.black};
   font-weight: bolder;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
 `;
 
 export const Title2 = styled.h2`

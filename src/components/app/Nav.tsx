@@ -48,6 +48,7 @@ const NavStyled = styled.nav`
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
+  padding: 1rem;
   .logo {
     color: ${({ theme }) => theme.colors.black};
     font-family: Romanesco;

@@ -26,11 +26,11 @@ interface Props {
 
 const PlacePage: FunctionComponent<Props> = ({ place }) => {
   return (
-    <PageStyled>
+    <>
       <Head>
         <title>{place.title}</title>
       </Head>
-      <header>
+      <PlaceHeader>
         <div className="place-image">
           <img src={`${place.image}/800x540`} alt={place.title} />
         </div>
@@ -39,39 +39,37 @@ const PlacePage: FunctionComponent<Props> = ({ place }) => {
           {place.location}
         </p>
         <Title1>{place.title}</Title1>
-      </header>
+      </PlaceHeader>
       <section>
         <p>{place.desc}</p>
       </section>
       <section>
         <RequestBooking place={place}></RequestBooking>
       </section>
-    </PageStyled>
+    </>
   );
 };
 
-const PageStyled = styled.div`
-  header {
-    display: grid;
-    gap: 1.5rem;
-    .place-image {
-      position: relative;
-      img {
-        border-radius: ${({ theme }) => theme.border.big};
-        border-radius: 10px;
-        width: 100%;
-        max-height: 36rem;
-        object-fit: cover;
-      }
+const PlaceHeader = styled.header`
+  display: grid;
+  gap: 1.5rem;
+  .place-image {
+    position: relative;
+    img {
+      border-radius: ${({ theme }) => theme.border.big};
+      border-radius: 10px;
+      width: 100%;
+      max-height: 36rem;
+      object-fit: cover;
     }
-    .location {
-      display: flex;
-      align-items: center;
-      color: ${({ theme }) => theme.colors.main};
-      font-size: 2rem;
-      img {
-        margin-right: 1rem;
-      }
+  }
+  .location {
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.main};
+    font-size: 2rem;
+    img {
+      margin-right: 1rem;
     }
   }
 `;

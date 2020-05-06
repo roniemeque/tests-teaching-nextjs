@@ -5,36 +5,47 @@ import { globalStyles } from "../styles/global";
 import { Global } from "@emotion/core";
 import styled from "../styles/styled";
 import Nav from "../components/app/Nav";
+import Footer from "../components/app/Footer";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles}></Global>
-      <Nav></Nav>
-      <Main>
-        <Component {...pageProps} />
-      </Main>
-      <footer>footer</footer>
+      <App>
+        <Nav></Nav>
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+        <Footer></Footer>
+      </App>
     </ThemeProvider>
   );
 }
 
+const App = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  @media (min-width: 900px) {
+    border: 1.4rem solid #f7f7f7;
+  }
+`;
+
 const Main = styled.main`
-  max-width: calc(900px + 2 * ${({ theme }) => theme.gutter});
+  width: calc(900px + 2 * ${({ theme }) => theme.gutter});
+  max-width: 100vw;
   margin: 2rem auto 0;
   display: grid;
-  padding-bottom: 5rem;
+  justify-content: center;
+  row-gap: 1rem;
   grid-template-columns: ${({ theme }) => theme.gutter} 1fr ${({ theme }) =>
       theme.gutter};
   & > * {
     grid-column: 2 / -2;
-    display: grid;
-    gap: 2rem;
   }
   & > .full {
     grid-column: span 3;
   }
-  justify-content: center;
   .gap-in-full {
     padding: 0 ${({ theme }) => theme.gutter};
   }

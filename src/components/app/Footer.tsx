@@ -5,6 +5,8 @@ const Footer: FC = () => {
   return <FooterStyled>footer</FooterStyled>;
 };
 
-const FooterStyled = styled.footer``;
+const FooterStyled = styled.footer`
+  padding: 1rem;
+`;
 
 export default Footer;
