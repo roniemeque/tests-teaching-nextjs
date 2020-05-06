@@ -6,3 +6,12 @@ interface Place {
   image: string;
   dayFee: number;
 }
+
+interface Booking {
+  id?: string;
+  placeId: string;
+  total: number;
+  email: string;
+  checkIn: string;
+  checkOut: string;
+}

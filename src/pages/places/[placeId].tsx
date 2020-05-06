@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import fetch from "isomorphic-unfetch";
 import { FunctionComponent } from "react";
 import { Title1 } from "../../styles/Titles";
-import { apiUrl } from "../../helpers/api";
+import RequestBooking from "../../components/bookings/RequestBooking";
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
@@ -42,6 +42,9 @@ const PlacePage: FunctionComponent<Props> = ({ place }) => {
       </header>
       <section>
         <p>{place.desc}</p>
+      </section>
+      <section>
+        <RequestBooking place={place}></RequestBooking>
       </section>
     </PageStyled>
   );

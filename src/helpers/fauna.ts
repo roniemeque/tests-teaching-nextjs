@@ -35,3 +35,16 @@ export const getPlace = async (id: string): Promise<Place | null> => {
     return null;
   }
 };
+
+export const createBooking = async (booking: Booking): Promise<any> => {
+  try {
+    const { ref } = await client.query(
+      q.Create(q.Collection("bookings"), { data: { ...booking } })
+    );
+
+    return ref.value.id;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};

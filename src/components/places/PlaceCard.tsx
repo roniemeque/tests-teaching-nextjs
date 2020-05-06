@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react";
 import styled from "../../styles/styled";
-import { Title3 } from "../../styles/Titles";
-//import { centsToCurrency } from "../../helpers/money";
 import { Button } from "../../styles/Buttons";
 import Link from "next/link";
 import { centsToCurrency } from "../../helpers/currency";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "../../styles/styled";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -6,6 +6,10 @@ import Link from "next/link";
 const Nav = () => {
   const [bookingCode, setBookingCode] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    console.log("Nav first render");
+  }, []);
 
   const handleEnter = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && bookingCode) {

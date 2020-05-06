@@ -4,7 +4,6 @@ import PlaceList from "../components/places/PlaceList";
 import { GetServerSideProps } from "next";
 import fetch from "isomorphic-unfetch";
 import { FunctionComponent } from "react";
-import { apiUrl } from "../helpers/api";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const res = await fetch(`http://${req.headers.host}/api/places`);
