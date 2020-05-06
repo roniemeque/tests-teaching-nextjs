@@ -20,10 +20,13 @@ export const allPlaces = async (): Promise<Place[]> => {
   return places;
 };
 
-export const getPlace = async (id: string): Promise<Place | null> => {
+export const getItemById = async (
+  collectionName: string,
+  id: string
+): Promise<any> => {
   try {
     const { ref, data } = await client.query(
-      q.Get(q.Ref(q.Collection("places"), id))
+      q.Get(q.Ref(q.Collection(collectionName), id))
     );
 
     return {

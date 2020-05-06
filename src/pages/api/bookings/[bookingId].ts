@@ -2,14 +2,14 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getItemById } from "../../../helpers/fauna";
 
 type Data = {
-  place: Place;
+  booking?: Booking;
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const { placeId } = req.query;
+  const { bookingId } = req.query;
 
-  const place: Place = await getItemById("places", placeId as string);
+  const booking: Booking = await getItemById("bookings", bookingId as string);
 
   res.statusCode = 200;
-  res.json({ place });
+  res.json({ booking });
 };

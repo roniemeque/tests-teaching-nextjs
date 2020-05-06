@@ -3,13 +3,15 @@ import styled from "../../styles/styled";
 import { Button } from "../../styles/Buttons";
 import { format, addDays, differenceInDays } from "date-fns";
 import { centsToCurrency } from "../../helpers/currency";
-import moduleName from "next/router";
+import { useRouter } from "next/router";
 
 interface Props {
   place: Place;
 }
 
 const RequestBooking: FunctionComponent<Props> = ({ place }) => {
+  const router = useRouter();
+
   const [sending, setSending] = useState(false);
   const [booking, setBooking] = useState({
     email: "",
@@ -36,14 +38,21 @@ const RequestBooking: FunctionComponent<Props> = ({ place }) => {
       ...booking,
     };
 
-    const res = await fetch("/api/bookings/book", {
-      method: "POST",
-      body: JSON.stringify({ ...bookingRequest }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
+    try {
+      const res = await fetch("/api/bookings/book", {
+        method: "POST",
+        body: JSON.stringify({ ...bookingRequest }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const { bookingId } = await res.json();
+      if (bookingId) {
+        return router.push("/bookings/[bookingId]", `/bookings/${bookingId}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
