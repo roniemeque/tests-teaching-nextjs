@@ -45,9 +45,6 @@ export const globalStyles = () => css`
   li {
     list-style: none;
   }
-  a:not([class]) {
-    text-decoration-skip-ink: auto;
-  }
   img {
     max-width: 100%;
     display: block;
@@ -68,6 +65,9 @@ export const globalStyles = () => css`
   a {
     text-decoration: none;
     cursor: pointer;
+    &:not([class]) {
+      text-decoration-skip-ink: auto;
+    }
   }
   fieldset {
     border: none;

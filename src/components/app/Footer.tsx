@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "../../styles/styled";
 
 const Footer: FC = () => {
-  return <FooterStyled>footer</FooterStyled>;
+  return <FooterStyled>Cool Places</FooterStyled>;
 };
 
 const FooterStyled = styled.footer`
