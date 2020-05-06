@@ -1,18 +1,32 @@
-import Head from "next/head";
-import styled from "../../styles/styled";
-import { GetServerSideProps } from "next";
 import fetch from "isomorphic-unfetch";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { FunctionComponent } from "react";
-import { Title1 } from "../../styles/Titles";
 import RequestBooking from "../../components/bookings/RequestBooking";
+import styled from "../../styles/styled";
+import { Title1 } from "../../styles/Titles";
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-}) => {
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api"
+    : "https://coolplaces.ronie.dev/api";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch(`${API_URL}/places`);
+  const { places } = await res.json();
+
+  return {
+    paths: places.map(({ id }) => ({
+      params: { placeId: id },
+    })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { placeId } = params;
 
-  const res = await fetch(`http://${req.headers.host}/api/places/${placeId}`);
+  const res = await fetch(`${API_URL}/places/${placeId}`);
   const { place } = await res.json();
 
   return {
