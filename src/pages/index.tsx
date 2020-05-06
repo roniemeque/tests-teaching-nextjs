@@ -10,7 +10,7 @@ const API_URL =
     ? "http://localhost:3000/api"
     : "https://coolplaces.ronie.dev/api";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(`${API_URL}/places`);
   const { places } = await res.json();
 
